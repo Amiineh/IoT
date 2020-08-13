@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Paint on your screen!</title>
+
+    <style>
+        table {
+            border: 1px solid black;
+        }
+
+        td {
+            border: 1px solid black;
+            width: 40px;
+            height: 40px
+        }
+
+        .cell {
+            display: block;
+            width: 40px;
+            height: 40px
+
+        }
+
+        .color-cell {
+            border: 0px;
+            width: 40px;
+            height: 40px;
+            border-radius: 20px;
+
+        }
+    </style>
+
+
+    <script language="JavaScript" type="text/javascript">
+
+        function setDivStyle(id) {
+            // Set the display style
+            var cell = document.getElementById(id);
+            cell.style.backgroundColor = document.getElementById('myColor').value;
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", 'http://192.168.1.5/body', true);
+            xhr.setRequestHeader('Content-Type', 'text/plain');
+            xhr.send(JSON.stringify({
+                color: document.getElementById('myColor').value,
+                id: id
+            }));
+
+        }
+    </script>
+
+</head>
+
+<body>
+
+<div id="r1" style="text-align: center;">
+
+    </table>
+
+    <label for="myColor">Select your favorite color:  </label>
+
+
+    <input id="myColor" type='color' value="#B142BD"/>
+    <br>
+
+     <script src="build-table.js"></script>
+
+</div>
+
+
+</body>
+</html>
